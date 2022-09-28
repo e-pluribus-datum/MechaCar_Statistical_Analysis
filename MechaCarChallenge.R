@@ -23,5 +23,21 @@ Suspension_Coil <- read.csv(file='./Data/Suspension_Coil.csv',check.names=F,stri
 # create summary table for suspension coils
 total_summary <- Suspension_Coil %>%
   summarize(Mean=mean(PSI), Median=median(PSI), Variance=var(PSI), Std_Dev=sd(PSI))
-
 total_summary
+
+# view by lot
+lot_summary <- Suspension_Coil %>% group_by(Manufacturing_Lot) %>%
+  summarize(Mean=mean(PSI), Median=median(PSI), Variance=var(PSI), Std_Dev=sd(PSI))
+lot_summary
+
+#### Deliverable 3
+
+# perform Student t-test
+t.test(Suspension_Coil$PSI, mu=1500)
+
+# t-test by lot
+t.test(subset(Suspension_Coil, Manufacturing_Lot=="Lot1")$PSI, mu=1500)
+
+t.test(subset(Suspension_Coil, Manufacturing_Lot=="Lot2")$PSI, mu=1500)
+
+t.test(subset(Suspension_Coil, Manufacturing_Lot=="Lot3")$PSI, mu=1500)
