@@ -1,3 +1,5 @@
+*.code-workspace
+
 # History files
 .Rhistory
 .Rapp.history
